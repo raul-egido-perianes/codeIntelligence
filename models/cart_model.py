@@ -16,7 +16,7 @@ class Cart:
     def __init__(self):
         self.items: List[CartProduct] = []
     
-    def add_product(self, product_id: str, quantity: int):
+    def add_product(self, product_id: str, quantity: int) -> str:
         if quantity <= 0:
             raise ValueError("La cantidad debe ser mayor a 0.")
         
@@ -27,8 +27,10 @@ class Cart:
         existing_item = self.get_item(product_id)
         if existing_item:
             existing_item.quantity += quantity
+            return f"El producto '{product['name']}' ya estaba en el carro. Se ha sumado la cantidad, ahora tienes {existing_item.quantity}."
         else:
             self.items.append(CartProduct(product, quantity))
+            return f"Se ha añadido '{product['name']}' al carro con cantidad {quantity}."
     
     def remove_product(self, product_id: str):
         item = self.get_item(product_id)
