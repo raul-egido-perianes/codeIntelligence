@@ -16,6 +16,7 @@ from graph.states.checkout_confirm import checkout_confirm
 from graph.states.ask_name import ask_name
 from graph.states.ask_city import ask_city
 from graph.states.final_summary import final_summary
+from graph.states.checkout_cancelled import checkout_cancelled
 
 graph = StateGraph(ChatState)
 
@@ -27,6 +28,7 @@ graph.add_node("EDIT_CART", edit_cart)
 graph.add_node("SHOW_CART", show_cart)
 graph.add_node("FALLBACK", fallback)
 graph.add_node("CHECKOUT_CONFIRM", checkout_confirm)
+graph.add_node("CHECKOUT_CANCELLED", checkout_cancelled)
 graph.add_node("ASK_NAME", ask_name)
 graph.add_node("ASK_CITY", ask_city)
 graph.add_node("FINAL_SUMMARY", final_summary)
@@ -45,21 +47,32 @@ graph.add_conditional_edges(
         "REMOVE_FROM_CART": "EDIT_CART",
         "HELP": "HELP",
         "SHOW_CART": "SHOW_CART",
+
         "CHECKOUT": "CHECKOUT_CONFIRM",
+        "CONFIRM_YES": "ASK_NAME",
+        "CONFIRM_NO": "CHECKOUT_CANCELLED",
+        
+        "IDLE": "ROUTER",
+        "CONFIRM_REPEAT": "CHECKOUT_CONFIRM",
+
         "FALLBACK": "FALLBACK",
         "EXIT": END,
-        "ROUTER_BACK": "ROUTER",
     },
 )
+
 
 # graph.add_edge("SHOW_CATALOG", "ROUTER")
 # graph.add_edge("EDIT_CART", "ROUTER")
 # graph.add_edge("SHOW_CART", "ROUTER")
 # graph.add_edge("FALLBACK", "ROUTER")
-graph.add_edge("CHECKOUT_CONFIRM", "ASK_NAME")
-graph.add_edge("ASK_NAME", "ASK_CITY")
-graph.add_edge("ASK_CITY", "FINAL_SUMMARY")
+
+graph.add_edge("CHECKOUT_CANCELLED", END)
+graph.add_edge("CHECKOUT_CONFIRM", END)
+graph.add_edge("ASK_NAME", END)
+graph.add_edge("ASK_CITY", END)
 graph.add_edge("FINAL_SUMMARY", END)
+
+
 
 app = graph.compile()
 

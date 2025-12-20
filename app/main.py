@@ -12,15 +12,24 @@ state = {
     "intent": "",
     "name": None,
     "city": None,
+    "awaiting_confirmation": False,
+    "awaiting_name": False,
+    "awaiting_city": False,
+    "chat_finished": False,
 }
 
 while True:
-    print(state["response"])  # mostramos respuesta anterior
     user_input = input("Usuario: ")
     state["user_input"] = user_input
 
     result = app.invoke(state)
     state.update(result)
 
-    if result.get("intent") == "EXIT":
+    print(state["response"])
+
+    if state.get("chat_finished"):
+        print("\nChat finalizado.")
+        break
+
+    if state.get("intent") == "EXIT":
         break

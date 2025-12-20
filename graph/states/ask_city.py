@@ -3,4 +3,5 @@ from graph.state_machine import ChatState
 
 def ask_city(state: ChatState) -> ChatState:
     state["response"] = "¿En qué ciudad resides?"
+    state["awaiting_city"] = True
     return state

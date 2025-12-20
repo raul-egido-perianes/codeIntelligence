@@ -9,3 +9,7 @@ class ChatState(TypedDict):
     intent: str
     name: Optional[str]
     city: Optional[str]
+    awaiting_confirmation: bool
+    awaiting_name: bool
+    awaiting_city: bool
+    chat_finished: bool
