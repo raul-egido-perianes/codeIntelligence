@@ -1,5 +1,6 @@
 # graph/states/fallback.py
-from graph.state_machine import ChatState  # si necesitas ChatState
+from graph.types import ChatState
+
 
 def help(state: ChatState) -> ChatState:
     state["response"] = "Estas son las acciones que puedes hacer:\n" \

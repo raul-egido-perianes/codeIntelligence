@@ -1,5 +1,5 @@
 # graph/states/final_summary.py
-from graph.state_machine import ChatState
+from graph.types import ChatState
 
 def final_summary(state: ChatState) -> ChatState:
     cart_items = state["cart"].list_items()

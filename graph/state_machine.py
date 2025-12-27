@@ -47,14 +47,14 @@ graph.add_conditional_edges(
         "REMOVE_FROM_CART": "EDIT_CART",
         "HELP": "HELP",
         "SHOW_CART": "SHOW_CART",
-
         "CHECKOUT": "CHECKOUT_CONFIRM",
-        "CONFIRM_YES": "ASK_NAME",
         "CONFIRM_NO": "CHECKOUT_CANCELLED",
-        
-        "IDLE": "ROUTER",
+        "CONFIRM_YES": "ASK_NAME",
         "CONFIRM_REPEAT": "CHECKOUT_CONFIRM",
 
+        "ASK_CITY": "ASK_CITY",
+
+        "FINAL_SUMMARY": "FINAL_SUMMARY",
         "FALLBACK": "FALLBACK",
         "EXIT": END,
     },

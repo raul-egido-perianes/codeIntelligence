@@ -1,4 +1,4 @@
-from graph.state_machine import ChatState
+from graph.types import ChatState
 from models.catalog import get_all_products
 
 def show_catalog(state: ChatState) -> ChatState:
