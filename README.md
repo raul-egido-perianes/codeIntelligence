@@ -9,24 +9,24 @@ El flujo del chatbot está gestionado mediante LangGraph, simulando una máquina
 ## EJECUCIÓN DEL CHATBOT
 
 Para poder ejecutar el proyecto y utilizarlo de manera correcta y efectiva hay que seguir una serie de pasos:
-1. Crear un entorno virtual:
+- Crear un entorno virtual:
     python -m venv .venv
     source .venv/bin/activate     # Linux/macOS
     .venv\Scripts\activate        # Windows
 
-2. Instalar las dependencias necesarias en el caso de que no esten instaladas:
+- Instalar las dependencias necesarias en el caso de que no esten instaladas:
     pip install -r requirements.txt
 
-3. Ejecutar el programa:
+- Ejecutar el programa:
     python app/main.py
 
 
 ## EJECUCIÓN DE LOS TESTS
 
 Para poder ejecutar los tests y comprobar el correcto funcionamiento de las funciones implementadas existen diferentes maneras:
-1. Desde la propia aplicación donde se abre el proyecto haciendo click derecho sobre la carpeta de test y ejecutandolos.
+- Desde la propia aplicación donde se abre el proyecto haciendo click derecho sobre la carpeta de test y ejecutandolos.
 
-2. Ejecutando este comando desde terminal en la carpeta del proyecto:
+- Ejecutando este comando desde terminal en la carpeta del proyecto:
     python -m pytest -q
 
 
@@ -34,45 +34,55 @@ Para poder ejecutar los tests y comprobar el correcto funcionamiento de las func
 
 El chatbot funciona como una máquina de estados conversacional, donde cada acción del usuario determina la siguiente. 
 
+START → ROUTER
+        ├─ SHOW_CATALOG
+        ├─ EDIT_CART / REMOVE / MODIFICAR
+        ├─ SHOW_CART
+        ├─ HELP
+        ├─ CHECKOUT_CONFIRM → (sí) → ASK_NAME → ASK_CITY → FINAL_SUMMARY → END
+        └─ CHECKOUT_CONFIRM → (no) → CHECKOUT_CANCELLED → ROUTER
+
+
 En la carpeta "graph" se puede observar una imagen con un pequeño dibujo del grafo diseñado para implementar el proyecto.
 
 
 ## ESTRUCTURA
 
 codeIntelligence/
-├─ app/
-│   ├─ main.py
-│   ├─ config.py
-│   └─ utils.py
-├─ graph/
-│   ├─ state_machine.py
-│   ├─ types.py
-│   ├─ GRAFO_CHATBOT.png
-│   └─ states/
-│      ├─ router_state.py
-│      ├─ start_state.py
-│      ├─ show_catalog.py
-│      ├─ edit_cart.py
-│      ├─ show_cart.py
-│      ├─ checkout_confirm.py
-│      ├─ ask_name.py
-│      ├─ help.py
-│      ├─ ask_city.py
-│      ├─ final_summary.py
-│      ├─ checkout_cancelled.py
-│      └─ fallback.py
-├─ models/
-│   ├─ cart_model.py
-│   └─ catalog.py
-├─ tests/
-│   ├─ test_cart_model.py
-│   ├─ test_catalog.py
-│   ├─ test_router.py
-│   └─ test_states.py
-└─ README.md
+├── app/
+│   ├── main.py                  # Programa principal
+│   ├── config.py
+│   └── utils.py
+├── graph/
+│   ├── state_machine.py         # Grafo principal / LangGraph
+│   ├── types.py                 # Definición del estado base
+│   ├── GRAFO_CHATBOT.png        # Imagen del diagrama del grafo
+│   └── states/                  # Nodos / Acciones del chatbot
+│       ├── router_state.py
+│       ├── start_state.py
+│       ├── show_catalog.py
+│       ├── edit_cart.py
+│       ├── show_cart.py
+│       ├── checkout_confirm.py
+│       ├── checkout_cancelled.py
+│       ├── ask_name.py
+│       ├── ask_city.py
+│       ├── final_summary.py
+│       ├── help.py
+│       └── fallback.py
+├── models/
+│   ├── cart_model.py            # Lógica del carrito
+│   └── catalog.py               # Catálogo de productos
+├── tests/
+│   ├── test_cart_model.py
+│   ├── test_catalog.py
+│   ├── test_router.py           # Opcional
+│   └── test_states.py
+└── README.md
 
 
-## EJEMPLOS
+
+## EJEMPLO
 
 Usuario: ver productos
 Bot: Aquí tienes los productos disponibles: ...
