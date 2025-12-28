@@ -42,59 +42,30 @@ En la carpeta "graph" se puede observar una imagen con un pequeño dibujo del gr
 
 ## ESTRUCTURA
 
-codeIntelligence/
-├── app/
-│   ├── main.py                  # Programa principal
-│   ├── config.py
-│   └── utils.py
-├── graph/
-│   ├── state_machine.py         # Grafo principal / LangGraph
-│   ├── types.py                 # Definición del estado base
-│   ├── GRAFO_CHATBOT.png        # Imagen del diagrama del grafo
-│   └── states/                  # Nodos / Acciones del chatbot
-│       ├── router_state.py
-│       ├── start_state.py
-│       ├── show_catalog.py
-│       ├── edit_cart.py
-│       ├── show_cart.py
-│       ├── checkout_confirm.py
-│       ├── checkout_cancelled.py
-│       ├── ask_name.py
-│       ├── ask_city.py
-│       ├── final_summary.py
-│       ├── help.py
-│       └── fallback.py
-├── models/
-│   ├── cart_model.py            # Lógica del carrito
-│   └── catalog.py               # Catálogo de productos
-├── tests/
-│   ├── test_cart_model.py
-│   ├── test_catalog.py
-│   ├── test_router.py           # Opcional
-│   └── test_states.py
-└── README.md
+<img width="427" height="490" alt="image" src="https://github.com/user-attachments/assets/f8e6ff8a-dfc3-4cca-976d-d7ad7e321e14" />
+
 
 
 
 ## EJEMPLO
 
-Usuario: ver productos
+Usuario: ver productos <br>
 Bot: Aquí tienes los productos disponibles: ...
 
-Usuario: añadir P003 2
+Usuario: añadir P003 2 <br>
 Bot: Producto añadido al carrito.
 
-Usuario: ver carrito
+Usuario: ver carrito <br>
 Bot: Estos son tus productos...
 
-Usuario: finalizar
+Usuario: finalizar <br>
 Bot: ¿Deseas confirmar la compra? (sí / no)
 
-Usuario: sí
+Usuario: sí <br>
 Bot: ¿Cuál es tu nombre?
 
-Usuario: Raul
+Usuario: Raul <br>
 Bot: ¿En qué ciudad resides?
 
-Usuario: Barcelona
+Usuario: Barcelona <br>
 Bot: Gracias Raul. Tu pedido será enviado a Barcelona. ¡Hasta pronto!
