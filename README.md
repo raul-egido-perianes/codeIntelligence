@@ -33,14 +33,14 @@ Para poder ejecutar los tests y comprobar el correcto funcionamiento de las func
 ## ARQUITECTURA
 
 El chatbot funciona como una máquina de estados conversacional, donde cada acción del usuario determina la siguiente. 
-
+'''
 START → ROUTER
         ├─ SHOW_CATALOG
         ├─ EDIT_CART / REMOVE / MODIFICAR
         ├─ SHOW_CART
         ├─ HELP
         ├─ CHECKOUT_CONFIRM → (sí) → ASK_NAME → ASK_CITY → FINAL_SUMMARY → END
-        └─ CHECKOUT_CONFIRM → (no) → CHECKOUT_CANCELLED → ROUTER
+        └─ CHECKOUT_CONFIRM → (no) → CHECKOUT_CANCELLED → ROUTER'''
 
 
 En la carpeta "graph" se puede observar una imagen con un pequeño dibujo del grafo diseñado para implementar el proyecto.
